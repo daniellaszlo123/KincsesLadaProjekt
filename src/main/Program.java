@@ -18,18 +18,23 @@ public class Program {
         j = new Jatekos();
         l = new Lada();
         
+        System.out.println(l.getLeiras());
+        System.out.println(Lada.BRONZ+": "+l.getBronzFelirat());
+        System.out.println(Lada.EZUST+": "+l.getEzustFelirat());
+        System.out.println(Lada.ARANY+": "+l.getAranyFelirat());
         System.out.println("Válassz egy Ládát: Bronz | Ezüst | Arany");
         System.out.print("Válaszod: ");
         j.setTipp(sc.nextLine());
         
         //System.out.println(j.getTipp());
         
-        if (l.talaltE(j.getTipp())) {
-            System.out.println("Sikeresen megtaláltad a kincset rejtő ládát");
-        }
-        else{
-            System.out.println("Ez most nem siekrült");
-        }
+//        if (l.talaltE(j.getTipp())) {
+//            System.out.println("Sikeresen megtaláltad a kincset rejtő ládát");
+//        }
+//        else{
+//            System.out.println("Ez most nem siekrült");
+//        }
+        System.out.println(l.talaltE(j.getTipp()));
 
     }
 }
