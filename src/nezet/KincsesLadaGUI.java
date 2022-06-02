@@ -1,13 +1,50 @@
 
 package nezet;
 
+import java.awt.Component;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
+import modell.Jatekos;
+import modell.Lada;
 
 
 public class KincsesLadaGUI extends javax.swing.JFrame {
+    
+    private final int LADAK_SZAMA=3;
+    
+    private JButton[] ladaGombok;
+    private Lada lada;
+    private JButton kattGomb;
+    
     public KincsesLadaGUI() {
         initComponents();
+        
+        lada = new Lada();
+        ladaGombokFeltolt();
+        
+        kattGomb=ladaGombok[0];
+        
+        lblLeiras.setText("<html><p style='padding: 10px'>"+ lada.getLeiras() +"</p></html>");
+        lblBronz.setText(lada.getBronzFelirat());
+        lblEzust.setText(lada.getEzustFelirat());
+        lblArany.setText(lada.getAranyFelirat());
+        pack();
     }
-
+    
+    private void ladaGombokFeltolt(){
+        int ladaIndex=0;
+        ladaGombok = new JButton[LADAK_SZAMA];
+        Component[] comps = pnlLadak.getComponents();
+        for (int i = 0; i < comps.length; i++) {
+            if (comps[i] instanceof JButton) {
+                JButton egyGomb = (JButton)comps[i];
+                ladaGombok[ladaIndex]=egyGomb;
+                ladaIndex++;
+            }
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -21,15 +58,15 @@ public class KincsesLadaGUI extends javax.swing.JFrame {
         lblLeiras = new javax.swing.JLabel();
         btnUjra = new javax.swing.JButton();
         pnlLadak = new javax.swing.JPanel();
-        lblArany = new javax.swing.JLabel();
-        lblEzust = new javax.swing.JLabel();
-        btnArany = new javax.swing.JButton();
-        btnEzust = new javax.swing.JButton();
-        btnBronz = new javax.swing.JButton();
-        lblBronz = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        btnBronz = new javax.swing.JButton();
+        btnEzust = new javax.swing.JButton();
+        btnArany = new javax.swing.JButton();
+        lblBronz = new javax.swing.JLabel();
+        lblEzust = new javax.swing.JLabel();
+        lblArany = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Találós kérdés");
@@ -41,122 +78,79 @@ public class KincsesLadaGUI extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblLeiras, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(119, Short.MAX_VALUE))
+            .addComponent(lblLeiras, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblLeiras, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(59, Short.MAX_VALUE))
+            .addComponent(lblLeiras, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
         );
 
         btnUjra.setText("Újra");
         btnUjra.setEnabled(false);
-
-        pnlLadak.setBorder(javax.swing.BorderFactory.createTitledBorder("Ládák"));
-
-        btnArany.setIcon(new javax.swing.ImageIcon(getClass().getResource("/kepek/zartJo.png"))); // NOI18N
-        btnArany.addActionListener(new java.awt.event.ActionListener() {
+        btnUjra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                uresLadaAction(evt);
+                btnUjraActionPerformed(evt);
             }
         });
 
-        btnEzust.setIcon(new javax.swing.ImageIcon(getClass().getResource("/kepek/zartJo.png"))); // NOI18N
+        pnlLadak.setBorder(javax.swing.BorderFactory.createTitledBorder("Ládák"));
+        pnlLadak.setLayout(new java.awt.GridLayout(3, 3, 20, 0));
+
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Bronz");
+        pnlLadak.add(jLabel1);
+
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Ezüst");
+        pnlLadak.add(jLabel2);
+
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Arany");
+        pnlLadak.add(jLabel3);
 
         btnBronz.setIcon(new javax.swing.ImageIcon(getClass().getResource("/kepek/zartJo.png"))); // NOI18N
+        btnBronz.setPreferredSize(new java.awt.Dimension(113, 83));
         btnBronz.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 uresLadaAction(evt);
             }
         });
+        pnlLadak.add(btnBronz);
 
-        jLabel1.setText("Bronz");
+        btnEzust.setIcon(new javax.swing.ImageIcon(getClass().getResource("/kepek/zartJo.png"))); // NOI18N
+        btnEzust.setPreferredSize(new java.awt.Dimension(113, 83));
+        pnlLadak.add(btnEzust);
 
-        jLabel2.setText("Ezüst");
+        btnArany.setIcon(new javax.swing.ImageIcon(getClass().getResource("/kepek/zartJo.png"))); // NOI18N
+        btnArany.setPreferredSize(new java.awt.Dimension(113, 83));
+        btnArany.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                uresLadaAction(evt);
+            }
+        });
+        pnlLadak.add(btnArany);
 
-        jLabel3.setText("Arany");
+        lblBronz.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        pnlLadak.add(lblBronz);
 
-        javax.swing.GroupLayout pnlLadakLayout = new javax.swing.GroupLayout(pnlLadak);
-        pnlLadak.setLayout(pnlLadakLayout);
-        pnlLadakLayout.setHorizontalGroup(
-            pnlLadakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlLadakLayout.createSequentialGroup()
-                .addGroup(pnlLadakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlLadakLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(pnlLadakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnBronz, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblBronz, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(pnlLadakLayout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(jLabel1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
-                .addGroup(pnlLadakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlLadakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(lblEzust, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnEzust, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlLadakLayout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(jLabel2)))
-                .addGap(52, 52, 52)
-                .addGroup(pnlLadakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLadakLayout.createSequentialGroup()
-                        .addGroup(pnlLadakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblArany, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnArany, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLadakLayout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(39, 39, 39))))
-        );
-        pnlLadakLayout.setVerticalGroup(
-            pnlLadakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlLadakLayout.createSequentialGroup()
-                .addGroup(pnlLadakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlLadakLayout.createSequentialGroup()
-                        .addGroup(pnlLadakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnlLadakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(pnlLadakLayout.createSequentialGroup()
-                                .addComponent(btnArany, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblArany, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 10, Short.MAX_VALUE))
-                            .addGroup(pnlLadakLayout.createSequentialGroup()
-                                .addComponent(btnBronz, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lblBronz, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(pnlLadakLayout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnEzust, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblEzust, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
+        lblEzust.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        pnlLadak.add(lblEzust);
+
+        lblArany.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        pnlLadak.add(lblArany);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(btnUjra)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnUjra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(pnlLadak, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(pnlLadak, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -167,8 +161,8 @@ public class KincsesLadaGUI extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(57, 57, 57)
-                        .addComponent(btnUjra)))
+                        .addGap(50, 50, 50)
+                        .addComponent(btnUjra, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlLadak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -179,9 +173,25 @@ public class KincsesLadaGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void uresLadaAction(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uresLadaAction
-        
+        kattGomb = (JButton)evt.getSource();
+        Icon kep = new ImageIcon(getClass().getResource("/kepek/uresJo.png"));
+        kattGomb.setIcon(kep);
+        JOptionPane.showMessageDialog(null, lada.talaltE(Lada.ARANY), "Visszajelzés", JOptionPane.OK_OPTION);
+        ladaGombokKapcsolas(false);
+        btnUjra.setEnabled(true);
     }//GEN-LAST:event_uresLadaAction
 
+    private void btnUjraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUjraActionPerformed
+        Icon kep = new ImageIcon(getClass().getResource("/kepek/zartJo.png"));
+        kattGomb.setIcon(kep);
+        ladaGombokKapcsolas(true);
+    }//GEN-LAST:event_btnUjraActionPerformed
+
+    private void ladaGombokKapcsolas(boolean be){
+        for (int i = 0; i < ladaGombok.length; i++) {
+            ladaGombok[i].setEnabled(be);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnArany;
