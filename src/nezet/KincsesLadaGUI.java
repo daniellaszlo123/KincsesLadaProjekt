@@ -6,13 +6,15 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
-import modell.Jatekos;
 import modell.Lada;
 
 
 public class KincsesLadaGUI extends javax.swing.JFrame {
     
     private final int LADAK_SZAMA=3;
+    private final String ZARTLADA="/kepek/zartJo.png";
+    private final String URESLADA="/kepek/uresJo.png";
+    private final String KINCSESLADA="/kepek/kincsesJo.png";
     
     private JButton[] ladaGombok;
     private Lada lada;
@@ -119,6 +121,13 @@ public class KincsesLadaGUI extends javax.swing.JFrame {
 
         btnEzust.setIcon(new javax.swing.ImageIcon(getClass().getResource("/kepek/zartJo.png"))); // NOI18N
         btnEzust.setPreferredSize(new java.awt.Dimension(113, 83));
+        btnEzust.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btnEzust.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnEzust.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kincsesLadaAction(evt);
+            }
+        });
         pnlLadak.add(btnEzust);
 
         btnArany.setIcon(new javax.swing.ImageIcon(getClass().getResource("/kepek/zartJo.png"))); // NOI18N
@@ -174,7 +183,7 @@ public class KincsesLadaGUI extends javax.swing.JFrame {
 
     private void uresLadaAction(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uresLadaAction
         kattGomb = (JButton)evt.getSource();
-        Icon kep = new ImageIcon(getClass().getResource("/kepek/uresJo.png"));
+        Icon kep = new ImageIcon(getClass().getResource(URESLADA));
         kattGomb.setIcon(kep);
         JOptionPane.showMessageDialog(null, lada.talaltE(Lada.ARANY), "Visszajelzés", JOptionPane.OK_OPTION);
         ladaGombokKapcsolas(false);
@@ -187,6 +196,9 @@ public class KincsesLadaGUI extends javax.swing.JFrame {
         ladaGombokKapcsolas(true);
     }//GEN-LAST:event_btnUjraActionPerformed
 
+    private void kincsesLadaAction(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kincsesLadaAction
+        
+    }//GEN-LAST:event_kincsesLadaAction
     private void ladaGombokKapcsolas(boolean be){
         for (int i = 0; i < ladaGombok.length; i++) {
             ladaGombok[i].setEnabled(be);
