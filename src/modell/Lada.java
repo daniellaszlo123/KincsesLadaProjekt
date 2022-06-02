@@ -6,6 +6,7 @@ public class Lada {
     public static final String BRONZ = "bronz";
     public static final String EZUST = "ezüst";
     public static final String ARANY = "arany";
+    public static final String VISSZAJELZES="megtalálnod a kincset rejtő ládát.";
     
     private String bronzFelirat;
     private String ezustFelirat;
@@ -45,11 +46,10 @@ public class Lada {
     
     
     public String talaltE(String tipp){
-        String visszajelzes="megtalálnod a kincset rejtő ládát.";
         if (tipp.equals(Lada.EZUST)) {
-            return String.format("Sikerült %s", visszajelzes);
+            return String.format("Sikerült %s", VISSZAJELZES);
         }
-        return String.format("Nem sikerült %s", visszajelzes);
+        return String.format("Nem sikerült %s", VISSZAJELZES);
     }
 
 }
