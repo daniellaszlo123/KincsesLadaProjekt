@@ -122,8 +122,6 @@ public class KincsesLadaGUI extends javax.swing.JFrame {
         pnlLadak.add(btnBronz);
 
         btnEzust.setIcon(new javax.swing.ImageIcon(getClass().getResource("/kepek/zartJo.png"))); // NOI18N
-        btnEzust.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        btnEzust.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnEzust.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 kincsesLadaAction(evt);
