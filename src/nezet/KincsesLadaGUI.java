@@ -56,9 +56,10 @@ public class KincsesLadaGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        pnlContainer = new javax.swing.JPanel();
+        btnUjra = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         lblLeiras = new javax.swing.JLabel();
-        btnUjra = new javax.swing.JButton();
         pnlLadak = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -74,6 +75,14 @@ public class KincsesLadaGUI extends javax.swing.JFrame {
         setTitle("Találós kérdés");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
+        btnUjra.setText("Újra");
+        btnUjra.setEnabled(false);
+        btnUjra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUjraActionPerformed(evt);
+            }
+        });
+
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Leírás"));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -84,16 +93,10 @@ public class KincsesLadaGUI extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblLeiras, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(lblLeiras, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
-
-        btnUjra.setText("Újra");
-        btnUjra.setEnabled(false);
-        btnUjra.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUjraActionPerformed(evt);
-            }
-        });
 
         pnlLadak.setBorder(javax.swing.BorderFactory.createTitledBorder("Ládák"));
         pnlLadak.setLayout(new java.awt.GridLayout(3, 3, 20, 0));
@@ -111,7 +114,6 @@ public class KincsesLadaGUI extends javax.swing.JFrame {
         pnlLadak.add(jLabel3);
 
         btnBronz.setIcon(new javax.swing.ImageIcon(getClass().getResource("/kepek/zartJo.png"))); // NOI18N
-        btnBronz.setPreferredSize(new java.awt.Dimension(113, 83));
         btnBronz.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 uresLadaAction(evt);
@@ -120,7 +122,6 @@ public class KincsesLadaGUI extends javax.swing.JFrame {
         pnlLadak.add(btnBronz);
 
         btnEzust.setIcon(new javax.swing.ImageIcon(getClass().getResource("/kepek/zartJo.png"))); // NOI18N
-        btnEzust.setPreferredSize(new java.awt.Dimension(113, 83));
         btnEzust.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         btnEzust.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnEzust.addActionListener(new java.awt.event.ActionListener() {
@@ -131,7 +132,6 @@ public class KincsesLadaGUI extends javax.swing.JFrame {
         pnlLadak.add(btnEzust);
 
         btnArany.setIcon(new javax.swing.ImageIcon(getClass().getResource("/kepek/zartJo.png"))); // NOI18N
-        btnArany.setPreferredSize(new java.awt.Dimension(113, 83));
         btnArany.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 uresLadaAction(evt);
@@ -148,33 +148,49 @@ public class KincsesLadaGUI extends javax.swing.JFrame {
         lblArany.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         pnlLadak.add(lblArany);
 
+        javax.swing.GroupLayout pnlContainerLayout = new javax.swing.GroupLayout(pnlContainer);
+        pnlContainer.setLayout(pnlContainerLayout);
+        pnlContainerLayout.setHorizontalGroup(
+            pnlContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlContainerLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlContainerLayout.createSequentialGroup()
+                        .addComponent(btnUjra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pnlLadak, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        pnlContainerLayout.setVerticalGroup(
+            pnlContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlContainerLayout.createSequentialGroup()
+                .addGroup(pnlContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlContainerLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlContainerLayout.createSequentialGroup()
+                        .addGap(72, 72, 72)
+                        .addComponent(btnUjra, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addComponent(pnlLadak, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnUjra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(pnlLadak, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(pnlContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(btnUjra, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlLadak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(pnlContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -182,24 +198,34 @@ public class KincsesLadaGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void uresLadaAction(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uresLadaAction
-        kattGomb = (JButton)evt.getSource();
-        Icon kep = new ImageIcon(getClass().getResource(URESLADA));
-        kattGomb.setIcon(kep);
-        JOptionPane.showMessageDialog(null, lada.talaltE(Lada.ARANY), "Visszajelzés", JOptionPane.OK_OPTION);
-        ladaGombokKapcsolas(false);
-        btnUjra.setEnabled(true);
+        setGombIcon(evt, URESLADA);
+        JOptionPane.showMessageDialog(pnlContainer, lada.talaltE(Lada.ARANY), "Visszajelzés", JOptionPane.OK_OPTION);
+        gombokKapcsolo(false, true);
     }//GEN-LAST:event_uresLadaAction
 
     private void btnUjraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUjraActionPerformed
-        Icon kep = new ImageIcon(getClass().getResource("/kepek/zartJo.png"));
+        Icon kep = new ImageIcon(getClass().getResource(ZARTLADA));
         kattGomb.setIcon(kep);
-        ladaGombokKapcsolas(true);
+        ladaGombokKapcsolo(true);
     }//GEN-LAST:event_btnUjraActionPerformed
 
     private void kincsesLadaAction(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kincsesLadaAction
-        
+        setGombIcon(evt, KINCSESLADA);
+        JOptionPane.showMessageDialog(pnlContainer, lada.talaltE(Lada.EZUST), "Visszajelzés", JOptionPane.DEFAULT_OPTION);
+        gombokKapcsolo(false, true);
     }//GEN-LAST:event_kincsesLadaAction
-    private void ladaGombokKapcsolas(boolean be){
+    private void gombokKapcsolo(boolean ladaGombok, boolean ujraGomb){
+        ladaGombokKapcsolo(ladaGombok);
+        btnUjra.setEnabled(ujraGomb);
+    }
+    
+    private void setGombIcon(java.awt.event.ActionEvent evt, String ladaTipus){
+        kattGomb = (JButton)evt.getSource();
+        Icon kep = new ImageIcon(getClass().getResource(ladaTipus));
+        kattGomb.setIcon(kep);
+    }
+    
+    private void ladaGombokKapcsolo(boolean be){
         for (int i = 0; i < ladaGombok.length; i++) {
             ladaGombok[i].setEnabled(be);
         }
@@ -218,6 +244,7 @@ public class KincsesLadaGUI extends javax.swing.JFrame {
     private javax.swing.JLabel lblBronz;
     private javax.swing.JLabel lblEzust;
     private javax.swing.JLabel lblLeiras;
+    private javax.swing.JPanel pnlContainer;
     private javax.swing.JPanel pnlLadak;
     // End of variables declaration//GEN-END:variables
 }
