@@ -206,7 +206,7 @@ public class KincsesLadaGUI extends javax.swing.JFrame {
     private void btnUjraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUjraActionPerformed
         Icon kep = new ImageIcon(getClass().getResource(ZARTLADA));
         kattGomb.setIcon(kep);
-        ladaGombokKapcsolo(true);
+        gombokKapcsolo(true, false);
     }//GEN-LAST:event_btnUjraActionPerformed
 
     private void kincsesLadaAction(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kincsesLadaAction
