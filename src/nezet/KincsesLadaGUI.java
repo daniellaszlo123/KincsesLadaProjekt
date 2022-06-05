@@ -6,6 +6,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
+import modell.Jatekos;
 import modell.Lada;
 
 
@@ -197,7 +198,7 @@ public class KincsesLadaGUI extends javax.swing.JFrame {
 
     private void uresLadaAction(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uresLadaAction
         setGombIcon(evt, URESLADA);
-        JOptionPane.showMessageDialog(pnlContainer, lada.talaltE(Lada.ARANY), "Visszajelzés", JOptionPane.OK_OPTION);
+        JOptionPane.showMessageDialog(pnlContainer, lada.talaltE(Jatekos.TIPP_ARANY), "Visszajelzés", JOptionPane.OK_OPTION);
         gombokKapcsolo(false, true);
     }//GEN-LAST:event_uresLadaAction
 
@@ -209,7 +210,7 @@ public class KincsesLadaGUI extends javax.swing.JFrame {
 
     private void kincsesLadaAction(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kincsesLadaAction
         setGombIcon(evt, KINCSESLADA);
-        JOptionPane.showMessageDialog(pnlContainer, lada.talaltE(Lada.EZUST), "Visszajelzés", JOptionPane.DEFAULT_OPTION);
+        JOptionPane.showMessageDialog(pnlContainer, lada.talaltE(Jatekos.TIPP_EZUST), "Visszajelzés", JOptionPane.DEFAULT_OPTION);
         gombokKapcsolo(false, true);
     }//GEN-LAST:event_kincsesLadaAction
     private void gombokKapcsolo(boolean ladaGombok, boolean ujraGomb){

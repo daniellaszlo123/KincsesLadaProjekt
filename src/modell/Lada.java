@@ -3,9 +3,6 @@ package modell;
 
 
 public class Lada {
-    public static final String BRONZ = "bronz";
-    public static final String EZUST = "ezüst";
-    public static final String ARANY = "arany";
     public static final String VISSZAJELZES="megtalálnod a kincset rejtő ládát.";
     
     private String bronzFelirat;
@@ -46,7 +43,7 @@ public class Lada {
     
     
     public String talaltE(String tipp){
-        if (tipp.equals(Lada.EZUST)) {
+        if (tipp.equals(Jatekos.TIPP_EZUST)) {
             return String.format("Sikerült %s", VISSZAJELZES);
         }
         return String.format("Nem sikerült %s", VISSZAJELZES);

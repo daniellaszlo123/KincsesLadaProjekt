@@ -1,15 +1,16 @@
 
 package teszt;
 
+import modell.Jatekos;
 import modell.Lada;
 
 
 public class LadaTeszt {
     public static void main(String[] args) {
         System.out.println("******Teszt******\n");
-        new LadaTeszt().ladaTalaltTeszt(Lada.EZUST);
-        new LadaTeszt().ladaNemTalaltTeszt(Lada.ARANY);
-        new LadaTeszt().ladaNemTalaltTeszt(Lada.BRONZ);
+        new LadaTeszt().ladaTalaltTeszt(Jatekos.TIPP_EZUST);
+        new LadaTeszt().ladaNemTalaltTeszt(Jatekos.TIPP_ARANY);
+        new LadaTeszt().ladaNemTalaltTeszt(Jatekos.TIPP_BRONZ);
         System.out.println("*****Teszt VÉGE*****");
     }
     
